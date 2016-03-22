@@ -15,8 +15,6 @@ int main()
 
     cout << "vec1(x): " << vec1.x << " | vec1(y): " << vec1.y << " | vec1(Length): " << vec1.length() << endl;
 
-	cout << "vec2(x): " << vec2.x << endl;
-
 	cout << "vec3(x): " << vec3.x << " | vec3(y): " << vec3.y << " | vec3(Length): " << vec3.length() << endl;
 	
 
@@ -24,11 +22,16 @@ int main()
 	//{
 	//	cout << "sin(" << i << "): " << sinf(i * xMath::DEG_TO_RAD) << " | xMath::sin(" << i << "): " << xMath::sin(i) << endl;
 	//}
+	xMath::initSinTable();
 
-	float i = 45;
-	cout.precision(17);
 
-	cout << "sinf(" << i << "): "  << sinf(i * xMath::DEG_TO_RAD) << " | xMath::sin(" << i << "): " << xMath::sin(i) << endl;
+	for (float deg = 0; deg <= 90; deg += 5)
+	{
+		cout << "sinf(" << deg << "): " << sinf(deg * xMath::DEG_TO_RAD)
+			<< " | xMath::sin(" << deg << "): " << xMath::sin(deg) << endl ;
+	}
+
+	
 
 
 	system("PAUSE");

@@ -37,10 +37,6 @@ PosVec2f::PosVec2f(const PosVec2f &posVec) // CONSTRUCTOR
 }
 
 
-
-
-
-
 /// UNTESTED ///
 void PosVec2f::set(Vec2f positionA, Vec2f positionB) // SET
 {
@@ -124,9 +120,6 @@ Vec2f PosVec2f::getB() // SET_B
 {
 	return Vec2f(b_x, b_y);
 }
-
-
-
 
 
 
