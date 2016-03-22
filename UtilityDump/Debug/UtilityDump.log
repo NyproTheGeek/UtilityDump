@@ -1,0 +1,30 @@
+﻿Build started 3/18/2016 9:55:45 PM.
+     1>Project "C:\Users\Nypro\Desktop\Code\Visual Studio Projects\UtilityDump\UtilityDump\UtilityDump.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Mat4f.cpp PosVec2f.cpp xMath.cpp
+         xMath.cpp
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(18): warning C4244: 'return' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(24): warning C4244: 'return' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(30): warning C4244: 'initializing' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(42): warning C4244: 'initializing' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(54): warning C4244: '=' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(57): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(63): warning C4244: '=' : conversion from 'const double' to 'float', possible loss of data
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(66): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+         PosVec2f.cpp
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\posvec2f.cpp(266): warning C4244: 'initializing' : conversion from 'const double' to 'float', possible loss of data
+         Mat4f.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Nypro\Desktop\Code\Visual Studio Projects\UtilityDump\Debug\UtilityDump.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Nypro\Desktop\Code\Visual Studio Projects\UtilityDump\Debug\UtilityDump.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Nypro\Desktop\Code\Visual Studio Projects\UtilityDump\Debug\UtilityDump.lib" /MACHINE:X86 Debug\xMath.obj
+         Debug\main.obj
+         Debug\Mat4f.obj
+         Debug\PosVec2f.obj
+         Debug\Vec2f.obj
+         Debug\Vec4f.obj
+         UtilityDump.vcxproj -> C:\Users\Nypro\Desktop\Code\Visual Studio Projects\UtilityDump\Debug\UtilityDump.exe
+     1>Done Building Project "C:\Users\Nypro\Desktop\Code\Visual Studio Projects\UtilityDump\UtilityDump\UtilityDump.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.56

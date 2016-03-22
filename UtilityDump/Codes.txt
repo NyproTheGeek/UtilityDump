@@ -1,0 +1,36 @@
+// 
+#ifndef 
+#define 
+
+
+#endif // 
+
+
+
+//void Vec2f::rotateByLongVer(float deg) // COMPLEX ROTATION;
+//{
+//    if (deg > 0) // If deg is positive
+//    {
+//        float rad = RAD_TO_DEG * deg;
+//        float a = cos(rad);
+//        float b = sin(rad);
+//        float t = (x * a) - (y * b);
+//        float u = (x * b) + (y * a);
+//        x = t;
+//        y = u;
+//    }
+//    else if (deg < 0)  // If deg is negative
+//    {
+//        float rad = RAD_TO_DEG * deg * -1; // flip to positive
+//        float a = cos(rad);
+//        float b = sin(rad);
+//        float t = (x * a) + (y * b); // caculate using conjugate
+//        float u = (-x * b) + (y * a);
+//        x = t;
+//        y = u;
+//    }
+//    else // If deg is zero
+//    {
+//        return;
+//    }
+//}
