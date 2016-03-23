@@ -8,7 +8,6 @@ class xMath
 private:
 	static float rad;
 	static float radTo2;
-	static float radTo3;
 	static float SINE_TABLE[];
 
 public:

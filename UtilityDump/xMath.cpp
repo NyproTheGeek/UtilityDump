@@ -12,7 +12,6 @@ float xMath::SINE_TABLE[65536];
 
 float xMath::rad;
 float xMath::radTo2;
-float xMath::radTo3;
 
 /// UNTESTED ///
 float xMath::degToRad(float deg)
@@ -60,9 +59,11 @@ float xMath::sin(float deg) // Approximated taylor series
 {
 	rad = deg * DEG_TO_RAD;
 	radTo2 = rad * rad;
-	radTo3 = radTo2 * rad;
 	// return rad - (radTo3 * 0.1666666666) + (radTo2*radTo3 * 0.0083333333) - (radTo2*radTo2*radTo3 * 0.0001984127) + (radTo3*radTo3*radTo3 * 0.0000027557);
-	return rad * (1 - radTo2 *(0.1666666666 + radTo2 * (0.0083333333 - radTo2 *(0.0001984127 + (0.0000027557 * radTo2)))));
+	// return rad * (1 - (radTo2 *(0.1666666666 + (radTo2 * (0.0083333333 - (radTo2 *(0.0001984127 + (0.0000027557 * radTo2))))))));
+	// return rad * (1 - (0.1666666666 * radTo2) + (0.1666666666 * radTo2 * radTo2) - (0.1666666666 * radTo3 * radTo3) + (0.1666666666 * radTo3 * radTo3 * radTo3));
+	return rad * (1 -radTo2 *(0.1666666666 - radTo2 * (0.0083333333 - radTo2 *(0.0001984127 - 0.0000027557 * radTo2))));
+
 	// there's no need to reset static variables rad, radTo2, radTo3 to zero
 }
 
@@ -71,7 +72,6 @@ float xMath::cos(float deg) // error at 1e-4 // need new better approximation al
 {
 	rad = deg * DEG_TO_RAD;
 	radTo2 = rad * rad;
-	radTo3 = radTo2 * rad;
 	return 1 - (radTo2 * 0.5) + (radTo2*radTo2 * 0.0416666666) - (radTo3*radTo3 * 0.0013888888) + (radTo2*radTo3*radTo3 * 0.0000248016);
 	// there's no need to reset static variables rad, radTo2, radTo3 to zero
 }
