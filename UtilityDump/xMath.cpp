@@ -60,8 +60,6 @@ float xMath::sin(float deg) // Approximated taylor series
 	rad = deg * DEG_TO_RAD;
 	radTo2 = rad * rad;
 	// return rad - (radTo3 * 0.1666666666) + (radTo2*radTo3 * 0.0083333333) - (radTo2*radTo2*radTo3 * 0.0001984127) + (radTo3*radTo3*radTo3 * 0.0000027557);
-	// return rad * (1 - (radTo2 *(0.1666666666 + (radTo2 * (0.0083333333 - (radTo2 *(0.0001984127 + (0.0000027557 * radTo2))))))));
-	// return rad * (1 - (0.1666666666 * radTo2) + (0.1666666666 * radTo2 * radTo2) - (0.1666666666 * radTo3 * radTo3) + (0.1666666666 * radTo3 * radTo3 * radTo3));
 	return rad * (1 -radTo2 *(0.1666666666 - radTo2 * (0.0083333333 - radTo2 *(0.0001984127 - 0.0000027557 * radTo2))));
 
 	// there's no need to reset static variables rad, radTo2, radTo3 to zero
