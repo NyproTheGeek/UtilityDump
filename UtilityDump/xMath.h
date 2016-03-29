@@ -5,15 +5,26 @@
 
 class xMath
 {
-private:
-	static float rad;
-	static float radTo2;
-	static float SINE_TABLE[];
+	
 
 public:
 	static const float PI;
 	static const float DEG_TO_RAD;
 	static const float RAD_TO_DEG;
+
+	static float rad;
+	static float radTo2;
+	static float radTo3; /// REMOVABLE ///
+	static float SINE_TABLE[]; /// REMOVABLE ///
+	static const int SIN_BITS; /// REMOVABLE /// // 16KB. Adjust for accuracy. 
+	static const int SIN_MASK; /// REMOVABLE ///
+	static const int SIN_COUNT; /// REMOVABLE ///
+	static const float radFull; /// REMOVABLE ///
+	static const float degFull; /// REMOVABLE ///
+	static const float radToIndex; /// REMOVABLE ///
+	static const float degToIndex; /// REMOVABLE ///
+	static float SINE_TAB[]; /// REMOVABLE ///
+
 
 	static float degToRad(float deg);
 
@@ -39,9 +50,11 @@ public:
 
 	static Vec2f bezier4(Vec2f posA, Vec2f posB, Vec2f posC, Vec2f posD, float t);
 
-	static void initSinTable();
+	static void initSinTable(); /// REMOVABLE ///
 
-	static float _sin(float deg);
+	static float _sin(float deg); /// REMOVABLE ///
+
+	static float __sin(float deg);
 
 	//static float cos(float deg);
 

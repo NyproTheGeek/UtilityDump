@@ -24,11 +24,17 @@ int main()
 	//}
 	xMath::initSinTable();
 
+	cout
+		<< xMath::SIN_COUNT << endl;
 
 	for (float deg = 0; deg <= 90; deg += 5)
 	{
-		cout << "sinf(" << deg << "): " << sinf(deg * xMath::DEG_TO_RAD)
-			<< " | xMath::sin(" << deg << "): " << xMath::sin(deg) << endl ;
+		cout
+			<< "(" << deg << ") "
+			<< "sinf: " << sinf(deg * xMath::DEG_TO_RAD)
+			<< " | sin: " << xMath::sin(deg)
+			<< " | _sin: " << xMath::_sin(deg) 
+			<< " | __sin: " << xMath::__sin(deg) << endl;
 	}
 
 	
