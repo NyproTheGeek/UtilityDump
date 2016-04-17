@@ -67,14 +67,16 @@
     <ClCompile Include="xMath.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mat4f.cpp" />
-    <ClCompile Include="PosVec2f.cpp" />
+    <ClCompile Include="Line2f.cpp" />
     <ClCompile Include="Vec2f.cpp" />
     <ClCompile Include="Vec4f.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Chebyshev.h" />
+    <ClInclude Include="Pcshft.h" />
     <ClInclude Include="xMath.h" />
     <ClInclude Include="Mat4f.h" />
-    <ClInclude Include="PosVec2f.h" />
+    <ClInclude Include="Line2f.h" />
     <ClInclude Include="Vec2f.h" />
     <ClInclude Include="Vec4f.h" />
   </ItemGroup>

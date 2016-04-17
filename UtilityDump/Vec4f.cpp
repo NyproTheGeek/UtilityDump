@@ -1,5 +1,6 @@
 #include "Vec4f.h"
 #include "math.h"
+#include "xMath.h"
 // 13/03/16
 Vec4f::Vec4f () // CONSTRUCTOR
 {
@@ -51,6 +52,7 @@ float Vec4f::length() // LENGTH();
     float len = sqrt(((x*x) + (y*y) + (z*z)));
     return len;
 }
+
 
 /// UNTESTED ///
 float Vec4f::lengthSquared() // LENGTH_SQUARED

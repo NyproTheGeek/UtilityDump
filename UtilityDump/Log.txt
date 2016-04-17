@@ -1,0 +1,84 @@
+01/04/16
+So after several days of painful research on the fastest implementation of the trig functions (most notably sine an cosine functions), I was finally able to corner a very good one. Nights of figuring out Chebyshev equations are finally over.
+This implementation uses a simple 91-element array lookup table. The calculation was concise and the author claimed it only takes 4.4ms to compute with 100,000 iterations compared to 25ms it takes stdlib functions. 
+To me, that's pretty darn fast.
+It also works directly with degrees, which is a big plus as it eliminates conversion to radians. 
+This implementation uses lesser number of multiplications (3 v 4) and operations overall than my complex rotation implementation. Although the complex rotation covers all quadrants. I've not done any benchmarking on the performance though.
+This implementation is nearly accurate from 0 to PI/2, but it is not really a problem. However, I wish the dude provided an arcsine/arcos implementation or at least explained how it all works.
+
+
+02/04/16
+I don't think the fast implementation I discovered yesterday will replace my complex rotation, but it might play a part.
+Yesterday I decided bones should have a length property in order  to recalculate the length, after a number of rotations, to eliminate precision issues. This will involve normalizing the vector first v * 1/|v| and then multplying that by the original length |vo|.
+There is another longer version of it: 
+v + (|vo| * (1.0 - |v| / |vo|))
+I will need to update rotate() functions (in PosVec2f, Vec2f) to use the new cos/sin implementation instead of the stdlib versions, that's after I've increased the precision a bit.
+20:00 
+So I was able to figure out how the implementation works. The author was simply interpolating between pre-evaluated cos values while also trying to cleverly reduce the table. The size of the table was so small, it affected the precision (BTW, it was even more accurate than Spine's 65536-element table). There's nothing bad in increasing the size of the table by a few hundreds to increase precision. So I'm rewriting the implementation to use only two multiplication operations and to have a bigger lookup table for better accuracy. The orginal table was 91-element big. I'm split between making the new implementation it 901 or 9001-element big. I guess I will have try both.
+23:45
+So I wrote another implementation with a larger table and to my disappointment, it did little to increase the accuracy, even whe I increased the table to 9001, there are still errors especially from 60 to 90 degrees. It seems like Chebyshev approx is the way to go. 5 multiplication operations vs 2. :(
+
+float xMath::COS_TABLE[901];
+
+void xMath::initCosTable()
+{
+	float b = .0f; // I changed this to double and the accuracy was perfect
+	for (int a = 0; a < 901; a++, b += .1f)
+	{
+		COS_TABLE[a] = cosf(b * DEG_TO_RAD);
+	}
+}
+
+float xMath::cos_e(float deg)
+{
+	float deg10 = deg * 10.0f;
+	int degInt = (int)deg10;
+	double a = COS_TABLE[degInt];
+	return (float) a + (COS_TABLE[degInt + 1] - a) * (deg10 - degInt);
+}
+
+
+04/03/16
+00:34
+I spent virtually the whole of yesterday reimplementing the lookup function and I realised that changing one particular variable (variable b in initCosTable() from float to double, gave me the accuracy I needed. Weird. and I don't understand why. Now, the 9002 implementation is much more accurate than the sin/cos that came with std math lib. Of course the four term chebyshev couldn't catch up with that. 
+The chebyshev implementation uses 5 multiplication operations, this one only requires two just like the implementation Spine uses, but much more accurate. Spine's implementation uses a default 16384-element (512kb) array, mine uses just 9002 (281kb) for complete float-level accuracy. Infact the 902 (28kb) version is nearly as accurate as the 9002 version and it is definitely more accurate than Spine's. And this makes me question if Spine's implementation is using interpolation at all.
+Right now, the 902 (28kb) version is sufficient for most usage. Hell! It is more accurate than Spine's 65536 (1mb) implementation.
+I've also implemented acos/asin using the same technique. I might as well implement the tan/atan version if need be.
+As for why the arrays (902, 9002) were increased by 1. I had to add an extra index to prevent error, when for example, cos(90) is called. So there will be something to interpolate the 91st element with.
+I also had trouble figuring out how to represent some keys I never though about previously as animation data. 
+I was also going to implement a common line intersection algo yesterday, but I never had the time.
+Still all the line intersection detection techniques I came up with are more computationally expensive than the cross product approach.
+I was also able to come up with how to get the angle of vector. I really don't know if they will work, because I didn't test them.
+arccos(v.x^2 / |v|^2)
+arccos(v.x^2 / (v.x + v.yi) * (v.x - v.yi)) //complex multiplication
+11:47
+I decided to expand the cos table to contain 360 degrees. It will make later usage convenient.
+Now I'm making the 902 (now 3602) table the default. I might also need to expand the acos table to contain negative values that will return degrees from 180.1 through 270 (cos and sin are negative in that quadrant), but that will be a job for another da. Until it is really needed.`
+12:39
+Earlier today, I made the decision that 90 degree must be part of first quadrant along with 0, So 0 to 90 is Quadrant1, 90.0001 to 180 is Quadrant2, 180.001 to 270 is Quadrant3 and 270.001 to 356.999 is Quadrant4. Well the thing is Quadrant4 has been cheated of 0. It ought to be 0 - 89.9999, 90 - 179.999, 180 - 269.999 and 270 - 356.999. Although 0, 90, 180 and 270 aren't really ment to be any quadrant. The initial decision was made because I was originally using a 90 degree table where 0 and 90 must be present, but now that the table has been expanded to 360 I must resolve the Quadrant issue mentioned above and implement the proper one.
+13:03
+I'm thinking of going back to using 90-degree table again. It will be a waste of a 360 table if sin implementation still has to determine which quadrant a degree is in and then make calculations from that.
+In fact I'm using a 90-degree table.
+15:38
+So I've been able to draft out an algo (not implemented yet) for geting the cos/sin values of 0 through 356.999 degrees using a 90-degree cos table. I've also resolved the quadrant isue with the algo. 
+I also wrote an algo for getting the quadrant a degree value (between 0 - 356.999) falls in. 
+int quadrant = (int) 4/360 * degree
+4/360 can be replaced with f32 value, 0.0111111.
+The algo for getting cos/sin values of each quadrant from 90-degree table goes as follows:
+COS
+Quadrant 1 || cos(d)
+Quadrant 2 || -1 * cos(90 - (d - 90)) = -1 * cos(180 - d)
+Quadrant 3 || -1 * cos(d - 180)
+Quadrant 4 || cos(90 - (d - 270)) = cos(360 - d)
+SINE
+Quadrant 1 || cos(90 - d)
+Quadrant 2 || cos(d - 90)
+Quadrant 3 || -1 * cos(90 -(d - 180)) = -1 * cos(270 - d)
+Quadrant 4 || -1 * cos(d - 270)
+I wrote another algo for knowing where angles greater 360 degrees or lesser than 0 degree falls within a 360 degree range.
+int d = (int) deg * 1/360
+if (d == 0) // angle is below 360
+    ret deg
+else // angle is equal to or greater than 360
+    ret deg - (d * 360)
+BTW, if I'm going to derive other cos/sin values from other quadrants like this, then I'm going to use at least 4 multiplication operations (and some bunch of other additive and comparison operations). Too bad though, because now I'm lagging behind Spine implementation in terms of speed. Probably still faster than 4-term chebyshev, but it is definitely more accurate than both. I'm sticking with this anyway, since it is a proper balance between accuracy and speed.

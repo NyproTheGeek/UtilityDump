@@ -110,11 +110,11 @@ void Mat4f::setIdentity() // SETIDENTITY()
 
 float Mat4f::get(int row, int col) // GET()
 {
-    return m[row][col];
+    return m[row + 1][col + 1]; // Not using the off by one index, for readability purpose
 }
 
 
-Vec4f Mat4f::operator* (Vec4f &vec) // TIMES()
+Vec4f Mat4f::operator* (Vec4f &vec) // TIMES() // Column Vectors Used!
 {
     return Vec4f((float)(vec.x*m[0][0] + vec.y*m[0][1] + vec.z*m[0][2] + vec.w*m[0][3]),
         (float)(vec.x*m[1][0] + vec.y*m[1][1] + vec.z*m[1][2] + vec.w*m[1][3]),

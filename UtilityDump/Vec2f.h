@@ -14,27 +14,27 @@ public:
 
 	Vec2f(const Vec2f &vec); // CONSTRUCTOR
 
-	void set(float x, float y); // SET();
+	void set(float x, float y); // SET()
 
-	void set(const Vec2f &vec); // SET();
+	void set(const Vec2f &vec); // SET()
 
-	float length(); // LENGTH();
+	float length(); // LENGTH()
 
 	float lengthSquared(); // LENGTH_SQUARED
 
-	void normalize(); // NORMALIZE();
+	void normalize(); // NORMALIZE()
 
-	Vec2f getNormal(); // GETNORMAL();
+	Vec2f getNormal(); // GETNORMAL()
 
-	float dot(Vec2f &vec); // DOT();
+	float dot(Vec2f &vec); // DOT()
 
-	Vec2f operator+ (Vec2f &vec); // PLUS();
+	Vec2f operator+ (Vec2f &vec); // PLUS()
 
-	Vec2f operator- (Vec2f &vec); // MINUS();
+	Vec2f operator- (Vec2f &vec); // MINUS()
 
-	Vec2f operator* (Vec2f &vec); // TIMES();
+	Vec2f operator* (Vec2f &vec); // TIMES()
 
-	void operator* (float scalar); // TIMES();
+	void operator* (float scalar); // TIMES()
 
 	Vec2f operator/ (Vec2f &vec);
 

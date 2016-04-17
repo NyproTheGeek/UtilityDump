@@ -157,10 +157,9 @@ bool Vec2f::operator!= (Vec2f &vec) // NOT_EQUALS();
 /// UNTESTED ///
 void Vec2f::rotate (float deg) // COMPLEX_ROTATION;
 {
-    float rad = (float) xMath::DEG_TO_RAD * deg;
 	// getting the unit vector out of the angle
-    float q = cos(rad); // the x of the angle
-    float r = sin(rad); // the y of the angle
+	float q = xMath::cos_m(deg); // the x of the angle
+    float r = xMath::sin_m(deg); // the y of the angle
 	// could have assigned the calculation straight to x and y 
 	// but x is going to change before y is assigned
 	// so I used temp variables to hold the value and then assign them to x and y

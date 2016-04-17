@@ -1,15 +1,35 @@
-﻿Build started 3/27/2016 7:29:05 PM.
+﻿Build started 4/16/2016 2:02:16 PM.
      1>Project "C:\Users\Nypro\Desktop\Code\Visual Studio Projects\UtilityDump\UtilityDump\UtilityDump.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt xMath.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Line2f.cpp Vec2f.cpp Vec4f.cpp main.cpp xMath.cpp
+         Line2f.cpp
+         Generating Code...
+         Compiling...
          xMath.cpp
-     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(73): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(84): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(214): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(221): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(383): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(403): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(421): warning C4305: '+=' : truncation from 'double' to 'float'
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(444): warning C4305: '+=' : truncation from 'double' to 'float'
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(502): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(502): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(519): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(519): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(536): warning C4305: '+=' : truncation from 'double' to 'float'
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\xmath.cpp(559): warning C4305: '+=' : truncation from 'double' to 'float'
+         main.cpp
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\main.cpp(22): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\main.cpp(37): warning C4305: '+=' : truncation from 'double' to 'float'
+         Vec4f.cpp
+         Vec2f.cpp
+         Generating Code...
+     1>c:\users\nypro\desktop\code\visual studio projects\utilitydump\utilitydump\vec4f.cpp(30): warning C4717: 'Vec4f::Vec4f' : recursive on all control paths, function will cause runtime stack overflow
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Nypro\Desktop\Code\Visual Studio Projects\UtilityDump\Debug\UtilityDump.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Nypro\Desktop\Code\Visual Studio Projects\UtilityDump\Debug\UtilityDump.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Nypro\Desktop\Code\Visual Studio Projects\UtilityDump\Debug\UtilityDump.lib" /MACHINE:X86 Debug\xMath.obj
          Debug\main.obj
          Debug\Mat4f.obj
-         Debug\PosVec2f.obj
+         Debug\Line2f.obj
          Debug\Vec2f.obj
          Debug\Vec4f.obj
          UtilityDump.vcxproj -> C:\Users\Nypro\Desktop\Code\Visual Studio Projects\UtilityDump\Debug\UtilityDump.exe
@@ -17,4 +37,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.92
+Time Elapsed 00:00:06.57

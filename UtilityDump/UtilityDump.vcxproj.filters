@@ -27,10 +27,10 @@
     <ClCompile Include="Vec2f.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PosVec2f.cpp">
+    <ClCompile Include="xMath.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="xMath.cpp">
+    <ClCompile Include="Line2f.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,10 +44,16 @@
     <ClInclude Include="Mat4f.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PosVec2f.h">
+    <ClInclude Include="xMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="xMath.h">
+    <ClInclude Include="Chebyshev.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pcshft.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Line2f.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
